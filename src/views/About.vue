@@ -1,3 +1,3 @@
 <template>
-    <h1>About</h1>
+    <h1 class="text-3xl font-bold text-gray-800">{{ $t('about.title') }}</h1>
 </template>
