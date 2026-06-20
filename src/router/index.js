@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuth } from '../plugins/auth.js'
+import { useAuthStore } from '../stores/authStore.js'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Products from '../views/Products.vue'
@@ -7,6 +8,9 @@ import Lifecycle from '../views/Lifecycle.vue'
 import Reactivity from '../views/Reactivity.vue'
 import MixinDemo from '../views/MixinDemo.vue'
 import Login from '../views/Login.vue'
+import TokenLogin from '../views/TokenLogin.vue'
+import ProtectedPage from '../views/ProtectedPage.vue'
+import ForbiddenPage from '../views/ForbiddenPage.vue'
 import AdminLayout from '../layouts/AdminLayout.vue'
 import UserLayout from '../layouts/UserLayout.vue'
 import AdminDashboard from '../views/admin/AdminDashboard.vue'
@@ -18,6 +22,24 @@ const routes = [
         name: 'Login',
         component: Login,
         meta: { guest: true, hideNav: true },
+    },
+    {
+        path: '/token-login',
+        name: 'TokenLogin',
+        component: TokenLogin,
+        meta: { tokenGuest: true, hideNav: true },
+    },
+    {
+        path: '/protected',
+        name: 'Protected',
+        component: ProtectedPage,
+        meta: { requiresToken: true, permission: 'view:protected', hideNav: true },
+    },
+    {
+        path: '/forbidden',
+        name: 'Forbidden',
+        component: ForbiddenPage,
+        meta: { hideNav: true },
     },
     {
         path: '/admin',
@@ -88,8 +110,28 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
     const { user, isAuthenticated, getDashboardPath } = useAuth()
+    const authStore = useAuthStore()
+
+    if (to.meta.requiresToken) {
+        const valid = await authStore.ensureValidToken()
+
+        if (!valid || !authStore.isAuthenticated) {
+            return { path: '/token-login', query: { redirect: to.fullPath } }
+        }
+
+        if (to.meta.permission && !authStore.hasPermission(to.meta.permission)) {
+            return '/forbidden'
+        }
+    }
+
+    if (to.meta.tokenGuest && authStore.isAuthenticated) {
+        const valid = await authStore.ensureValidToken()
+        if (valid) {
+            return to.query.redirect || '/protected'
+        }
+    }
 
     if (to.meta.requiresAuth && !isAuthenticated.value) {
         return '/login'

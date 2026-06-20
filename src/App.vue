@@ -27,8 +27,10 @@ function setLocale(lang) {
         <router-link to="/reactivity">{{ $t('nav.reactivity') }}</router-link>
         <router-link to="/mixin">{{ $t('nav.mixin') }}</router-link>
         <router-link to="/about">{{ $t('nav.about') }}</router-link>
-        <router-link to="/login" class="ml-auto">{{ $t('nav.login') }}</router-link>
-        <div class="flex gap-2">
+        <router-link to="/login">{{ $t('nav.login') }}</router-link>
+        <router-link to="/token-login">{{ $t('nav.tokenLogin') }}</router-link>
+        <router-link to="/protected">{{ $t('nav.protected') }}</router-link>
+        <div class="ml-auto flex gap-2">
             <button
                 v-for="item in locales"
                 :key="item.value"

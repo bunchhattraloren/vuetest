@@ -6,7 +6,9 @@
     "lifecycle": "Lifecycle",
     "reactivity": "Reactivity",
     "mixin": "Mixin",
-    "login": "Login"
+    "login": "Login",
+    "tokenLogin": "Token Login",
+    "protected": "Protected"
   },
   "home": {
     "title": "Home"
@@ -202,5 +204,43 @@
     "wishlist": "Wishlist",
     "memberSince": "Member Since",
     "myRecentOrders": "My Recent Orders"
+  },
+  "token": {
+    "loginTitle": "Token Authentication",
+    "loginSubtitle": "Login via DummyJSON API — returns access & refresh tokens",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "logout": "Logout",
+    "demoAccounts": "Demo Accounts",
+    "hasPermission": "has view:protected permission",
+    "noPermission": "no permission (403)",
+    "tokenNote": "Access token expires in 1 min. Use refresh token to renew.",
+    "apiNote": "API: dummyjson.com/auth/login · /auth/me · /auth/refresh",
+    "invalidCredentials": "Invalid username or password",
+    "loginFailed": "Login failed. Please try again.",
+    "loading": "Verifying token...",
+    "protected": "Protected Page",
+    "pageTitle": "Protected Content",
+    "pageSubtitle": "You need a valid token with view:protected permission to see this.",
+    "welcome": "Welcome, {name}!",
+    "content": "This page is only accessible after token authentication. The router guard checks your access token and permission before allowing access.",
+    "role": "Role",
+    "tokenInfo": "Token Information",
+    "accessToken": "Access Token",
+    "refreshToken": "Refresh Token",
+    "valid": "Valid",
+    "expired": "Expired",
+    "expiresIn": "Expires in {seconds}s",
+    "refreshNow": "Refresh Token Now",
+    "refreshing": "Refreshing...",
+    "refreshHint": "Wait 1 min for access token to expire, then click refresh or revisit this page to auto-refresh.",
+    "loadFailed": "Failed to load. Redirecting to login...",
+    "deniedTitle": "Access Denied",
+    "deniedSubtitle": "You are logged in but do not have view:protected permission.",
+    "loggedAs": "Logged in as {email}",
+    "goHome": "Go Home"
   }
 }

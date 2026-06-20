@@ -6,7 +6,9 @@
     "lifecycle": "生命周期",
     "reactivity": "响应式",
     "mixin": "Mixin",
-    "login": "登录"
+    "login": "登录",
+    "tokenLogin": "Token 登录",
+    "protected": "受保护页"
   },
   "home": {
     "title": "首页"
@@ -202,5 +204,43 @@
     "wishlist": "收藏夹",
     "memberSince": "注册时间",
     "myRecentOrders": "最近订单"
+  },
+  "token": {
+    "loginTitle": "Token 认证登录",
+    "loginSubtitle": "通过 DummyJSON API 登录 — 返回 access token 和 refresh token",
+    "username": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "signIn": "登录",
+    "signingIn": "登录中...",
+    "logout": "退出登录",
+    "demoAccounts": "演示账号",
+    "hasPermission": "有 view:protected 权限",
+    "noPermission": "无权限 (403)",
+    "tokenNote": "Access token 1 分钟过期，可用 refresh token 续期。",
+    "apiNote": "API: dummyjson.com/auth/login · /auth/me · /auth/refresh",
+    "invalidCredentials": "用户名或密码错误",
+    "loginFailed": "登录失败，请重试。",
+    "loading": "正在验证 token...",
+    "protected": "受保护页面",
+    "pageTitle": "受保护内容",
+    "pageSubtitle": "需要有效 token 且具备 view:protected 权限才能访问。",
+    "welcome": "欢迎，{name}！",
+    "content": "此页面仅在 token 认证通过后可访问。路由守卫会检查 access token 和权限。",
+    "role": "角色",
+    "tokenInfo": "Token 信息",
+    "accessToken": "Access Token",
+    "refreshToken": "Refresh Token",
+    "valid": "有效",
+    "expired": "已过期",
+    "expiresIn": "{seconds} 秒后过期",
+    "refreshNow": "立即刷新 Token",
+    "refreshing": "刷新中...",
+    "refreshHint": "等待 1 分钟 access token 过期后，点击刷新或重新访问页面将自动续期。",
+    "loadFailed": "加载失败，正在跳转登录...",
+    "deniedTitle": "无权访问",
+    "deniedSubtitle": "您已登录，但没有 view:protected 权限。",
+    "loggedAs": "当前登录：{email}",
+    "goHome": "返回首页"
   }
 }
